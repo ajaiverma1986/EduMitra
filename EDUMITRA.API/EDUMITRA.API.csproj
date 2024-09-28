@@ -4,4 +4,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Audit.Mvc.Core" Version="13.0.0" />
+    <PackageReference Include="Audit.NET.SqlServer" Version="13.0.0" />
+    <PackageReference Include="Audit.WebApi.Core" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EDUMITRA.Commonlib\EDUMITRA.Commonlib.csproj" />
+    <ProjectReference Include="..\EDUMITRA.Configuration\EDUMITRA.Configuration.csproj" />
+    <ProjectReference Include="..\EDUMITRA.Datamodel\EDUMITRA.Datamodel.csproj" />
+    <ProjectReference Include="..\EDUMITRA.Logging\EDUMITRA.Logging.csproj" />
+    <ProjectReference Include="..\EDUMITRA.Provider\EDUMITRA.Provider.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
 </Project>
