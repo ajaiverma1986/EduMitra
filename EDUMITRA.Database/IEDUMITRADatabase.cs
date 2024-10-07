@@ -26,7 +26,7 @@ namespace EDUMITRA.Database
         SqlDataReader ExecuteReader(SqlCommand dbCommand);
         Task<SqlDataReader> ExecuteReaderAsync(SqlCommand dbCommand);
         void SqlBulkCopyData(string tableName, DataTable dataTable);
-        //void AutoGenerateInputParams<T>(SqlCommand cmd, T request, IEDUMITRAServiceUser FIAAPIUser, bool IsListRequest = false, bool IsAddEditRequest = false, bool IsIncludeApplicationID = false, bool IsIncludeOrganizationID = false);
+        void AutoGenerateInputParams<T>(SqlCommand cmd, T request, IEDUMITRAServiceUser FIAAPIUser, bool IsListRequest = false, bool IsAddEditRequest = false, bool IsIncludeApplicationID = false, bool IsIncludeOrganizationID = false);
         Task<int> SqlBulkCopyDataAsync(string tableName, DataTable messageTable);
         Task<DataSet> ExecuteDataSetAsync(SqlCommand cmd);
     }

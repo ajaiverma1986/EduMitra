@@ -9,7 +9,7 @@ namespace EDUMITRA.Datamodel.Common
 {
     public enum ApplicationTypes
     {
-        [Display(Name = "Sanyukt Admin")]
+        [Display(Name = "EDUMITRA Admin")]
         FIAAdmin = 1,
         [Display(Name = "FIA Reconciliation")]
         FIAReconciliation = 2,
@@ -20,6 +20,11 @@ namespace EDUMITRA.Datamodel.Common
         [Display(Name = "Automated Jobs")]
         Jobs = 5
     }
+    public enum ConfigurationMethods
+    {
+        IsolatedDeployment = 1,
+        SaaS = 2
+    }
     [Flags]
     public enum SQLParamPlaces
     {
@@ -27,6 +32,19 @@ namespace EDUMITRA.Datamodel.Common
         None = 2,
         Reader = 4,
         Writer = 8
+    }
+    public enum Status
+    {
+        Active = 1,
+        DeActive = 2
+    }
+    public enum Platform
+    {
+        WEB = 1,
+        ANDROID = 2,
+        IOS = 3,
+        API = 4
+
     }
     public enum ActivityEnum
     {

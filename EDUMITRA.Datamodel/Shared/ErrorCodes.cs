@@ -62,6 +62,7 @@ namespace EDUMITRA.Datamodel.Shared
         SP_150 =150,
         SP_151 = 151,
         SP_152 = 152,
-        SP_153 = 153
+        SP_153 = 153,
+        SP_154 = 154
     }
 }

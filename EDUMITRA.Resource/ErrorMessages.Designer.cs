@@ -59,5 +59,14 @@ namespace EDUMITRA.Resource {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to REQUEST_NOT_PROCESSED.
+        /// </summary>
+        internal static string CODE_154 {
+            get {
+                return ResourceManager.GetString("CODE_154", resourceCulture);
+            }
+        }
     }
 }
