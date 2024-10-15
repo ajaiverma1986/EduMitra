@@ -18,30 +18,6 @@
             _database = new EDUMITRADatabase();
         }
 
-        public async Task<SimpleResponse> NotificationCategorySearch(string request, IEDUMITRAServiceUser FIAAPIUser)
-        {
-            SimpleResponse response = new SimpleResponse();
-            List<TypeViewModel> objUser = new List<TypeViewModel>();
-            TypeViewModel row;
-            var dbCommand = _database.GetStoredProcCommand("[NOTI].[NotificationCategory_AutoSearch]");
-            _database.AddInParameter(dbCommand, "@LinkedNotificationCategoryID", request);
-
-            using (var dataReader = await _database.ExecuteReaderAsync(dbCommand))
-            {
-                while (dataReader.Read())
-                {
-                    row = new TypeViewModel
-                    {
-                        Value = GetInt32Value(dataReader, "NotificationCategoryDetailID").Value.ToString(),
-                        Name = GetStringValue(dataReader, "NotificationCategoryName")
-                    };
-                    objUser.Add(row);
-                }
-            }
-            response.Result = objUser;
-            return response;
-        }
-
         public async Task<ListResponse> NotificationCategory_Search(NotificationCategoryRequest request, IEDUMITRAServiceUser FIAAPIUser)
         {
             ListResponse response = new ListResponse();

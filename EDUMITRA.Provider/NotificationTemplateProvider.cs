@@ -69,10 +69,10 @@
         }
 
 
-        public async Task<NotificationTemplateResponse> NotificationTemplate_GetByUID(Guid NotificationTemplateUID, IEDUMITRAServiceUser serviceUser)
+        public async Task<NotificationTemplateResponse> NotificationTemplate_GetByUID(long NotificationTemplateID, IEDUMITRAServiceUser serviceUser)
         {
             NotificationTemplateRequest request = new NotificationTemplateRequest();
-            request.NotificationTemplateUID = NotificationTemplateUID;
+            request.NotificationTemplateID = NotificationTemplateID;
             request.SetDefaults();
 
             ListResponse response = await NotificationTemplate_Search(request, serviceUser);

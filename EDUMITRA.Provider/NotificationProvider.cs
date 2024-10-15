@@ -140,7 +140,7 @@
             SimpleResponse response = new SimpleResponse();
 
             long NotificationLogID;
-            Guid _notificationUID = Guid.Empty;
+            long? _notificationID = 0;
 
             if (string.IsNullOrWhiteSpace(TO))
             {
@@ -176,7 +176,7 @@
                 notificationLog = await _notificationLogProvider.NotificationLog_GetByID(NotificationLogID, serviceUser);
                 if (notificationLog != null && notificationLog.NotificationLogID > 0)
                 {
-                    _notificationUID = notificationLog.NotificationLogUID.Value;
+                    _notificationID = notificationLog.NotificationLogID;
                 }
             }
 
@@ -191,7 +191,7 @@
             {
                 NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                 {
-                    NotificationLogUID = _notificationUID,
+                    NotificationLogID = _notificationID,
                     LastMessageSendResponse = "Notification Configuration not found for the org",
                     Status = NotificationLogStatus.Error
                 };
@@ -303,7 +303,7 @@
 
                 NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                 {
-                    NotificationLogUID = _notificationUID,
+                    NotificationLogID = _notificationID,
                     LastMessageSendResponse = "EMail Sent",
                     Status = NotificationLogStatus.Sent
                 };
@@ -315,7 +315,7 @@
             {
                 NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                 {
-                    NotificationLogUID = _notificationUID,
+                    NotificationLogID = _notificationID,
                     LastMessageSendResponse = ex.Message,
                     Status = NotificationLogStatus.Error
                 };
@@ -357,7 +357,7 @@
             SimpleResponse response = new SimpleResponse();
 
             long NotificationLogID;
-            Guid _notificationUID = Guid.Empty;
+            long? _notificationID =0;
 
             NotificationLogResponse notificationLog = new NotificationLogResponse()
             {
@@ -385,7 +385,7 @@
                 notificationLog = await _notificationLogProvider.NotificationLog_GetByID(NotificationLogID, serviceUser);
                 if (notificationLog != null && notificationLog.NotificationLogID > 0)
                 {
-                    _notificationUID = notificationLog.NotificationLogUID.Value;
+                    _notificationID = notificationLog.NotificationLogID.Value;
                 }
             }
 
@@ -397,7 +397,7 @@
                 {
                     NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                     {
-                        NotificationLogUID = _notificationUID,
+                        NotificationLogID = _notificationID,
                         LastMessageSendResponse = "Notification Configuration not found for the org",
                         Status = NotificationLogStatus.Error
                     };
@@ -410,7 +410,7 @@
             {
                 NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                 {
-                    NotificationLogUID = _notificationUID,
+                    NotificationLogID = _notificationID,
                     LastMessageSendResponse = "Invalid Organization ID",
                     Status = NotificationLogStatus.Error
                 };
@@ -446,7 +446,7 @@
             {
                 NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                 {
-                    NotificationLogUID = _notificationUID,
+                    NotificationLogID = _notificationID,
                     LastMessageSendResponse = httpResp.Errors?.FirstOrDefault()?.ErrorMessage ?? "Something wrong happend",
                     Status = NotificationLogStatus.Error
                 };
@@ -458,7 +458,7 @@
             {
                 NotificationLogStatusUpdateRequest statusUpdateRequest = new NotificationLogStatusUpdateRequest()
                 {
-                    NotificationLogUID = _notificationUID,
+                    NotificationLogID = _notificationID,
                     LastMessageSendResponse = $"SMS Sent - {httpResp.Result}",
                     Status = NotificationLogStatus.Sent
                 };

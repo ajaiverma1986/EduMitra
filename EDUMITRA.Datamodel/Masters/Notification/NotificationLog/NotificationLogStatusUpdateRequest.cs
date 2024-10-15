@@ -5,7 +5,7 @@
 
     public class NotificationLogStatusUpdateRequest
     {
-        public Guid NotificationLogUID { get; set; }
+        public long? NotificationLogID { get; set; }
 
         public string LastMessageSendResponse { get; set; }
 

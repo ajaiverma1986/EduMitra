@@ -17,30 +17,7 @@
             _database = new EDUMITRADatabase();
         }
 
-        public async Task<SimpleResponse> NotificationLogSearch(string request, IEDUMITRAServiceUser FIAAPIUser)
-        {
-            SimpleResponse response = new SimpleResponse();
-            List<TypeViewModel> objUser = new List<TypeViewModel>();
-            TypeViewModel row;
-            var dbCommand = _database.GetStoredProcCommand("[NOTI].[NotificationLog_AutoSearch]");
-            _database.AddInParameter(dbCommand, "@LinkedNotificationLogID", request);
-
-            using (var dataReader = await _database.ExecuteReaderAsync(dbCommand))
-            {
-                while (dataReader.Read())
-                {
-                    row = new TypeViewModel
-                    {
-                        Value = GetInt32Value(dataReader, "NotificationLogDetailID").Value.ToString(),
-                        Name = GetStringValue(dataReader, "NotificationLogName")
-                    };
-                    objUser.Add(row);
-                }
-            }
-            response.Result = objUser;
-            return response;
-        }
-
+       
         public async Task<ListResponse> NotificationLog_Search(NotificationLogRequest request, IEDUMITRAServiceUser FIAAPIUser)
         {
             ListResponse response = new ListResponse();

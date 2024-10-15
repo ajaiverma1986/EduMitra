@@ -13,8 +13,6 @@
     {
         public int? NotificationTemplateID { get; set; }
 
-        public Guid? NotificationTemplateUID { get; set; }
-
         public byte NotificationCategoryID { get; set; }
 
         public byte NotificationConfigID { get; set; }
@@ -95,8 +93,6 @@
         public void FromReader(SqlDataReader reader)
         {
             NotificationTemplateID = DataReaderHelper.Instance.GetDataReaderValue_Int(reader, "NotificationTemplateID");
-
-            NotificationTemplateUID = DataReaderHelper.Instance.GetDataReaderValue_Guid(reader, "NotificationTemplateUID");
 
             NotificationCategoryID = DataReaderHelper.Instance.GetDataReaderValue_Byte(reader, "NotificationCategoryID");
 

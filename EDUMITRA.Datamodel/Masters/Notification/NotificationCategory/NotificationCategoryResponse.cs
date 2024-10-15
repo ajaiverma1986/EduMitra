@@ -11,8 +11,6 @@ namespace EDUMITRA.DataModel.Masters.Notification.NotificationCategory
     {
         public byte? NotificationCategoryID { get; set; }
 
-        public Guid? NotificationCategoryUID { get; set; }
-
         public string NotificationCategory { get; set; }
 
         public string NotificationCategoryDescription { get; set; }
@@ -32,8 +30,6 @@ namespace EDUMITRA.DataModel.Masters.Notification.NotificationCategory
         public void FromReader(SqlDataReader reader)
         {
             NotificationCategoryID = DataReaderHelper.Instance.GetDataReaderValue_Byte(reader, "NotificationCategoryID");
-
-            NotificationCategoryUID = DataReaderHelper.Instance.GetDataReaderValue_Guid(reader, "NotificationCategoryUID");
 
             NotificationCategory = DataReaderHelper.Instance.GetDataReaderValue_String(reader, "NotificationCategory");
 

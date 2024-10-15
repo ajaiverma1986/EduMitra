@@ -48,10 +48,10 @@
             return NotificationLog;
         }
 
-        public async Task<NotificationLogResponse> NotificationLog_GetByUID(Guid NotificationLogUID, IEDUMITRAServiceUser serviceUser)
+        public async Task<NotificationLogResponse> NotificationLog_GetByUID(long  NotificationLogID, IEDUMITRAServiceUser serviceUser)
         {
             NotificationLogRequest request = new NotificationLogRequest();
-            request.NotificationLogUID = NotificationLogUID;
+            request.NotificationLogID = NotificationLogID;
             request.SetDefaults();
 
             ListResponse response = await NotificationLog_Search(request, serviceUser);

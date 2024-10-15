@@ -6,9 +6,7 @@ namespace EDUMITRA.DataModel.Masters.Notification.NotificationConfig
 {
     public class NotificationConfigRequest : ListRequest
     {
-        public byte? NotificationConfigID { get; set; }
-
-        public Guid? NotificationConfigUID { get; set; }
+        public long? NotificationConfigID { get; set; }
 
         public int? OrganizationID { get; set; }
 

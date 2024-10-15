@@ -50,7 +50,7 @@ namespace EDUMITRA.API.V1.Controllers
 
         [HttpGet]
         [AuditApi(EventTypeName = "POST NotificationConfigController/NotificationConfig_GetByID", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = true, IncludeModelState = true)]
-        public async Task<IActionResult> NotificationConfig_GetByID(byte NotificationConfigID)
+        public async Task<IActionResult> NotificationConfig_GetByID(long NotificationConfigID)
         {
             SimpleResponse response = new SimpleResponse();
             ErrorResponse error = new ErrorResponse(); //await _authenticationService.Validate(this.CallerUser, true);
@@ -72,7 +72,7 @@ namespace EDUMITRA.API.V1.Controllers
 
         [HttpGet]
         [AuditApi(EventTypeName = "POST NotificationConfigController/NotificationConfig_GetByUID", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = true, IncludeModelState = true)]
-        public async Task<IActionResult> NotificationConfig_GetByUID(Guid NotificationConfigUID)
+        public async Task<IActionResult> NotificationConfig_GetByUID(long NotificationConfigUID)
         {
             SimpleResponse response = new SimpleResponse();
             ErrorResponse error = new ErrorResponse(); //await _authenticationService.Validate(this.CallerUser, true);
@@ -82,7 +82,7 @@ namespace EDUMITRA.API.V1.Controllers
                 return Json(response);
             }
 
-            if (NotificationConfigUID == null || NotificationConfigUID == Guid.Empty)
+            if ( NotificationConfigUID == 0)
             {
                 response.SetError(ErrorCodes.INVALID_PARAMETERS);
                 return Json(response);

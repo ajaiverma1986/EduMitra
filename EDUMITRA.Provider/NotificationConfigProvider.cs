@@ -43,7 +43,7 @@
 
         }
 
-        public async Task<NotificationConfigResponse> NotificationConfig_GetByID(byte NotificationConfigID, IEDUMITRAServiceUser serviceUser)
+        public async Task<NotificationConfigResponse> NotificationConfig_GetByID(long NotificationConfigID, IEDUMITRAServiceUser serviceUser)
         {
             NotificationConfigRequest request = new NotificationConfigRequest();
             request.NotificationConfigID = NotificationConfigID;
@@ -103,10 +103,10 @@
             return NotificationConfig;
         }
 
-        public async Task<NotificationConfigResponse> NotificationConfig_GetByUID(Guid NotificationConfigUID, IEDUMITRAServiceUser serviceUser)
+        public async Task<NotificationConfigResponse> NotificationConfig_GetByUID(long NotificationConfigID, IEDUMITRAServiceUser serviceUser)
         {
             NotificationConfigRequest request = new NotificationConfigRequest();
-            request.NotificationConfigUID = NotificationConfigUID;
+            request.NotificationConfigID = NotificationConfigID;
             request.SetDefaults();
 
             ListResponse response = await NotificationConfig_Search(request, serviceUser);

@@ -6,7 +6,7 @@ namespace EDUMITRA.DataModel.Masters.Notification.NotificationCategory
 {
     public class NotificationCategoryStatusUpdateRequest
     { 
-        public Guid NotificationCategoryUID { get; set; }
+        public int NotificationCategoryID { get; set; }
 
         public Status Status { get; set; }
     }

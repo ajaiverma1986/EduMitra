@@ -72,7 +72,7 @@ namespace EDUMITRA.API.V1.Controllers
 
         [HttpGet]
         [AuditApi(EventTypeName = "POST NotificationTemplateController/NotificationTemplate_GetByUID", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = true, IncludeModelState = true)]
-        public async Task<IActionResult> NotificationTemplate_GetByUID(Guid NotificationTemplateUID)
+        public async Task<IActionResult> NotificationTemplate_GetByUID(long NotificationTemplateUID)
         {
             SimpleResponse response = new SimpleResponse();
             ErrorResponse error = new ErrorResponse(); //await _authenticationService.Validate(this.CallerUser, true);
@@ -82,7 +82,7 @@ namespace EDUMITRA.API.V1.Controllers
                 return Json(response);
             }
 
-            if (NotificationTemplateUID == null || NotificationTemplateUID == Guid.Empty)
+            if ( NotificationTemplateUID == 0)
             {
                 response.SetError(ErrorCodes.INVALID_PARAMETERS);
                 return Json(response);

@@ -11,8 +11,6 @@
     {
         public long? NotificationLogID { get; set; }
 
-        public Guid? NotificationLogUID { get; set; }
-
         public int? NotificationTemplateID { get; set; }
 
         [SQLParam(Usage = SQLParamPlaces.None)]
@@ -78,8 +76,6 @@
         public void FromReader(SqlDataReader reader)
         {
             NotificationLogID = DataReaderHelper.Instance.GetDataReaderValue_Long(reader, "NotificationLogID");
-
-            NotificationLogUID = DataReaderHelper.Instance.GetDataReaderValue_Guid(reader, "NotificationLogUID");
 
             NotificationTemplateID = DataReaderHelper.Instance.GetDataReaderNullableValue_Int(reader, "NotificationTemplateID");
 

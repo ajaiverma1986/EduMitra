@@ -9,8 +9,6 @@ namespace EDUMITRA.DataModel.Masters.Notification.NotificationLog
     {
         public long? NotificationLogID { get; set; }
 
-        public Guid? NotificationLogUID { get; set; }
-
         public int? NotificationTemplateID { get; set; }
 
         public int? ApplicationID { get; set; }

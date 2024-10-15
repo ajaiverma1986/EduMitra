@@ -22,7 +22,7 @@
             return await _repository.NotificationCategory_Search(request, serviceUser);
         }
 
-        public async Task<NotificationCategoryResponse> NotificationCategory_GetByID(byte NotificationCategoryID, IEDUMITRAServiceUser serviceUser)
+        public async Task<NotificationCategoryResponse> NotificationCategory_GetByID(long NotificationCategoryID, IEDUMITRAServiceUser serviceUser)
         {
             NotificationCategoryRequest request = new NotificationCategoryRequest();
             request.NotificationCategoryID = NotificationCategoryID;
@@ -46,10 +46,10 @@
             return NotificationCategory;
         }
 
-        public async Task<NotificationCategoryResponse> NotificationCategory_GetByUID(Guid NotificationCategoryUID, IEDUMITRAServiceUser serviceUser)
+        public async Task<NotificationCategoryResponse> NotificationCategory_GetByUID(long NotificationCategoryUID, IEDUMITRAServiceUser serviceUser)
         {
             NotificationCategoryRequest request = new NotificationCategoryRequest();
-            request.NotificationCategoryUID = NotificationCategoryUID;
+            request.NotificationCategoryID = NotificationCategoryUID;
             request.SetDefaults();
 
             ListResponse response = await NotificationCategory_Search(request, serviceUser);

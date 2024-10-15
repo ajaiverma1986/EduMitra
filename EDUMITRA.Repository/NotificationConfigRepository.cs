@@ -17,30 +17,7 @@
             _database = new EDUMITRADatabase();
         }
 
-        public async Task<SimpleResponse> NotificationConfigSearch(string request, IEDUMITRAServiceUser FIAAPIUser)
-        {
-            SimpleResponse response = new SimpleResponse();
-            List<TypeViewModel> objUser = new List<TypeViewModel>();
-            TypeViewModel row;
-            var dbCommand = _database.GetStoredProcCommand("[NOTI].[NotificationConfig_AutoSearch]");
-            _database.AddInParameter(dbCommand, "@LinkedNotificationConfigID", request);
-
-            using (var dataReader = await _database.ExecuteReaderAsync(dbCommand))
-            {
-                while (dataReader.Read())
-                {
-                    row = new TypeViewModel
-                    {
-                        Value = GetInt32Value(dataReader, "NotificationConfigDetailID").Value.ToString(),
-                        Name = GetStringValue(dataReader, "NotificationConfigName")
-                    };
-                    objUser.Add(row);
-                }
-            }
-            response.Result = objUser;
-            return response;
-        }
-
+       
         public async Task<ListResponse> NotificationConfig_Search(NotificationConfigRequest request, IEDUMITRAServiceUser FIAAPIUser)
         {
             ListResponse response = new ListResponse();

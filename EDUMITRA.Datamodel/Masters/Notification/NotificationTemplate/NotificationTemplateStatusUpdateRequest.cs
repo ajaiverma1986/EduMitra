@@ -6,7 +6,7 @@ namespace EDUMITRA.DataModel.Masters.Notification.NotificationTemplate
 {
    public class NotificationTemplateStatusUpdateRequest
     {
-        public Guid? NotificationTemplateUID { get; set; }
+        public long NotificationTemplateID { get; set; }
 
         public Status? Status { get; set; }
     }

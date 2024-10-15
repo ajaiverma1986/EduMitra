@@ -12,9 +12,6 @@
     public class NotificationConfigResponse
     {
         public byte? NotificationConfigID { get; set; }
-
-        public Guid? NotificationConfigUID { get; set; }
-
         public int OrganizationID { get; set; }
 
         [SQLParam(Usage = SQLParamPlaces.None)]
@@ -69,8 +66,6 @@
         public void FromReader(SqlDataReader reader)
         {
             NotificationConfigID = DataReaderHelper.Instance.GetDataReaderValue_Byte(reader, "NotificationConfigID");
-
-            NotificationConfigUID = DataReaderHelper.Instance.GetDataReaderValue_Guid(reader, "NotificationConfigUID");
 
             OrganizationID = DataReaderHelper.Instance.GetDataReaderValue_Int(reader, "OrganizationID");
 

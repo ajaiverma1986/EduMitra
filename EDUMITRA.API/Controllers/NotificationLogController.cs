@@ -72,7 +72,7 @@
 
         [HttpGet]
         [AuditApi(EventTypeName = "POST NotificationLogController/NotificationLog_GetByUID", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = true, IncludeModelState = true)]
-        public async Task<IActionResult> NotificationLog_GetByUID(Guid NotificationLogUID)
+        public async Task<IActionResult> NotificationLog_GetByUID(long NotificationLogID)
         {
             SimpleResponse response = new SimpleResponse();
             ErrorResponse error = new ErrorResponse(); //await _authenticationService.Validate(this.CallerUser, true);
@@ -82,13 +82,13 @@
                 return Json(response);
             }
 
-            if (NotificationLogUID == null || NotificationLogUID == Guid.Empty)
+            if ( NotificationLogID == 0)
             {
                 response.SetError(ErrorCodes.INVALID_PARAMETERS);
                 return Json(response);
             }
 
-            response.Result = await NotificationLogProvider.NotificationLog_GetByUID(NotificationLogUID, CallerUser);
+            response.Result = await NotificationLogProvider.NotificationLog_GetByUID(NotificationLogID, CallerUser);
             return Json(response);
         }
 
