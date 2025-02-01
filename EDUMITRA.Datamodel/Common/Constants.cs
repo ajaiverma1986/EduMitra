@@ -404,12 +404,7 @@ namespace EDUMITRA.Datamodel.Common
         APPROVE_REJECT_PURCHASE_REQUEST = 409
     }
 
-    public enum NotificationTemplate
-    {
-        USER_CREATED = 1,
-        PASSWORD_CHANGED = 2
-    }
-
+   
     [Flags]
     public enum NotificationMediumType
     {

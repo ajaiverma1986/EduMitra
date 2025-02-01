@@ -56,18 +56,17 @@
         {
             SimpleResponse response = new SimpleResponse();
 
-            NotificationTemplateResponse notificationTemplate = await _notificationTemplateProvider.NotificationTemplate_GetByID((int)request.NotificationTemplate, serviceUser);
-            //UserMasterDetailResponse userMaster = null;
+            NotificationTemplateResponse notificationTemplate = await _notificationTemplateProvider.NotificationTemplate_GetByID(1, serviceUser);
 
-            if (notificationTemplate.NotificationTemplateID == null || notificationTemplate.NotificationTemplateID <= 0)
-            {
-                response.SetError(ErrorCodes.INVALID_PARAMETERS, "Invalid Notification Template ID");
-                return response;
-            }
-            if (request.UserMasterID != null && request.UserMasterID.HasValue && request.UserMasterID.Value > 0)
-            {
-                //userMaster = await _userMasterProvider.UserMaster_GetByID(request.UserMasterID.Value, serviceUser);
-            }
+            //if (notificationTemplate.NotificationTemplateID == null || notificationTemplate.NotificationTemplateID <= 0)
+            //{
+            //    response.SetError(ErrorCodes.INVALID_PARAMETERS, "Invalid Notification Template ID");
+            //    return response;
+            //}
+            //if (request.UserMasterID != null && request.UserMasterID.HasValue && request.UserMasterID.Value > 0)
+            //{
+            //    //userMaster = await _userMasterProvider.UserMaster_GetByID(request.UserMasterID.Value, serviceUser);
+            //}
 
             #region Prepare & Send SMS
             //if ((!string.IsNullOrWhiteSpace(request.MobileNumber) || (userMaster != null && !string.IsNullOrWhiteSpace(userMaster.Mobile))) && notificationTemplate.SendSMS)
@@ -95,15 +94,15 @@
             StringBuilder Subject = new StringBuilder(notificationTemplate.EmailSubject);
             StringBuilder MessageBody = new StringBuilder(notificationTemplate.EmailBody);
 
-            foreach (string key in request.SubjectParameters.Keys)
-            {
-                Subject.Replace("#" + key.ToLower() + "#", request.SubjectParameters[key]);
-            }
+            //foreach (string key in request.SubjectParameters.Keys)
+            //{
+            //    Subject.Replace("#" + key.ToLower() + "#", request.SubjectParameters[key]);
+            //}
 
-            foreach (string key in request.BodyParameters.Keys)
-            {
-                MessageBody.Replace("#" + key.ToLower() + "#", request.BodyParameters[key]);
-            }
+            //foreach (string key in request.BodyParameters.Keys)
+            //{
+            //    MessageBody.Replace("#" + key.ToLower() + "#", request.BodyParameters[key]);
+            //}
 
             //if (userMaster != null && !string.IsNullOrWhiteSpace(userMaster.Email))
             //{
@@ -113,7 +112,8 @@
             //        request.TO = $"{userMaster.Email};";
             //}
 
-            response = await SendEMail(request.TO, Subject.ToString(), MessageBody.ToString(), serviceUser, request.CC, request.BCC, request.UserMasterID, request.Attachments);
+            //response = await SendEMail(request.TO, Subject.ToString(), MessageBody.ToString(), serviceUser, request.CC, request.BCC, request.UserMasterID, request.Attachments);
+            response = await SendEMail(request.TO, Subject.ToString(), MessageBody.ToString(), serviceUser, request.CC, request.BCC, request.UserMasterID, null);
             #endregion
 
             return response;

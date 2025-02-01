@@ -13,8 +13,4 @@
     <ProjectReference Include="..\EDUMITRA.Resource\EDUMITRA.Resource.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Masters\" />
-  </ItemGroup>
-
 </Project>

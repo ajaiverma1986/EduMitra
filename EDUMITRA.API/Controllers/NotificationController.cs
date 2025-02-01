@@ -28,7 +28,7 @@ namespace FIA.API.V1.Controllers
         }
 
         [HttpPost]
-        [AuditApi(EventTypeName = "GET  NotificationController/ Send", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = true, IncludeModelState = true)]
+       // [AuditApi(EventTypeName = "GET  NotificationController/ Send", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = true, IncludeModelState = true)]
         public async Task<IActionResult> Send([FromBody]NotificationRequest request)
         {
             SimpleResponse response = new SimpleResponse();
