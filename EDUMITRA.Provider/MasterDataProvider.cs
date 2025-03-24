@@ -53,6 +53,12 @@ namespace SANYUKT.Provider
             response = await _repository.GetBankList();
             return response;
         }
+        public async Task<SimpleResponse> GetClassList()
+        {
+            SimpleResponse response = new SimpleResponse();
+            response = await _repository.GetClassList();
+            return response;
+        }
         public async Task<SimpleResponse> GetStateList()
         {
             SimpleResponse response = new SimpleResponse();

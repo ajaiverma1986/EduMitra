@@ -283,5 +283,18 @@ namespace EDUMITRA.API.Controllers
             response = await _Provider.GetAllService(ServiceTypeId);
             return Json(response);
         }
+        [HttpGet]
+        public async Task<IActionResult> ClassList()
+        {
+            SimpleResponse response = new SimpleResponse();
+            ErrorResponse error = await _callValidator.AuthenticateAndAuthorize(CallerUser, true);
+            if (error.HasError)
+            {
+                response.SetError(error);
+                return Json(response);
+            }
+            response = await _Provider.GetClassList();
+            return Json(response);
+        }
     }
 }

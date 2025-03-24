@@ -162,4 +162,10 @@ namespace EDUMITRA.Datamodel.Masters
         public string PaymentChanelName { get; set; }
         public string StatusName { get; set; }
     }
+    public class ClassListResponse
+    {
+        public int ClassID { get; set; }
+        public string ClassName { get; set; }
+      
+    }
 }

@@ -2,9 +2,7 @@
 using EDUMITRA.Datamodel.Masters;
 using EDUMITRA.Datamodel.Shared;
 using EDUMITRA.Repository.Shared;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EDUMITRA.Repository
@@ -175,7 +173,30 @@ namespace EDUMITRA.Repository
             }
 
         }
+        public async Task<SimpleResponse> GetClassList()
+        {
+            SimpleResponse response = new SimpleResponse();
+            List<ClassListResponse> objMaster = new List<ClassListResponse>();
 
+            var dbCommand = _database.GetStoredProcCommand("[EDUMMDM].ListClassMaster");
+
+            using (var dataReader = await _database.ExecuteReaderAsync(dbCommand))
+            {
+                while (dataReader.Read())
+                {
+                    ClassListResponse obj = new ClassListResponse();
+
+                    obj.ClassID = GetInt32Value(dataReader, "ClassID").Value;
+
+                    obj.ClassName = GetStringValue(dataReader, "ClassName");
+
+                    objMaster.Add(obj);
+                }
+                response.Result = objMaster;
+                return response;
+            }
+
+        }
         public async Task<SimpleResponse> GetBankList()
         {
             SimpleResponse response = new SimpleResponse();
