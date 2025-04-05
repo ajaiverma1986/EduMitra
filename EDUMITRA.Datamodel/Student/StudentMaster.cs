@@ -15,9 +15,8 @@ namespace EDUMITRA.Datamodel.Student
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public string MobileNo {  get; set; }
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
         public int ClassId { get; set; }
-        public string CreatedBy { get; set; }
     }
     public class StudentListRequest:ListRequest
     {
@@ -26,7 +25,6 @@ namespace EDUMITRA.Datamodel.Student
         public long? RegistrationID { get; set; }
         public string RegistrationNo { get; set; }
         public string MobileNo { get; set; }
-        public long? UserMasterId { get; set; }
     }
     public class StudentListResponse
     {

@@ -30,7 +30,7 @@ namespace EDUMITRA.Provider
             if (otpRequest != null && !string.IsNullOrEmpty(otpRequest.mobileno))
             {
                 string _otp = CommonHelper.RandomDigits(6);
-                    smscontent = "" + _otp + " is the reference no. for FIA Verification. Do Not share the reference no. with anyone other than the agent assisting.";
+                    smscontent = "" + _otp + " is the reference no. Student Registration";
 
                     response = await repository.SendOTP(otpRequest.mobileno, _otp);
                
