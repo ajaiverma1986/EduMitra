@@ -29,5 +29,17 @@ namespace EDUMITRA.Provider
             response = await _repository.ListStudent(request, serviceUser);
             return response;
         }
+        public async Task<SimpleResponse> AddNewExam(ExamRequest request, IEDUMITRAServiceUser serviceUser)
+        {
+            SimpleResponse response = new SimpleResponse();
+            response.Result = await _repository.AddNewExam(request, serviceUser);
+            return response;
+        }
+        public async Task<ListResponse> ListExam(ExamListRequest request, IEDUMITRAServiceUser serviceUser)
+        {
+            ListResponse response = new ListResponse();
+            response = await _repository.ListExam(request, serviceUser);
+            return response;
+        }
     }
 }

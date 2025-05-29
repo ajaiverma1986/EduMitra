@@ -47,5 +47,34 @@ namespace EDUMITRA.API.Controllers
             response = await _provider.ListStudent(request, this.CallerUser);
             return Json(response);
         }
+
+        [HttpPost]
+        [AuditApi(EventTypeName = "POST StudentController/AddNewExam", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = false, IncludeModelState = false)]
+        public async Task<IActionResult> AddNewExam([FromBody] ExamRequest request)
+        {
+            SimpleResponse response = new SimpleResponse();
+            ErrorResponse error = await _callValidator.AuthenticateAndAuthorize(this.CallerUser, false);
+            if (error.HasError)
+            {
+                response.SetError(error);
+                return Json(response);
+            }
+            response = await _provider.AddNewExam(request, this.CallerUser);
+            return Json(response);
+        }
+        [HttpPost]
+        [AuditApi(EventTypeName = "POST StudentController/ListExam", IncludeHeaders = true, IncludeResponseBody = true, IncludeRequestBody = false, IncludeModelState = false)]
+        public async Task<IActionResult> ListExam([FromBody] ExamListRequest request)
+        {
+            ListResponse response = new ListResponse();
+            ErrorResponse error = await _callValidator.AuthenticateAndAuthorize(this.CallerUser, false);
+            if (error.HasError)
+            {
+                response.SetError(error);
+                return Json(response);
+            }
+            response = await _provider.ListExam(request, this.CallerUser);
+            return Json(response);
+        }
     }
 }
